@@ -27,7 +27,7 @@ For more details about Credential Providers and the changes between version 1 an
 
 The JUnit test creates an instance of the [StsClient interface](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sts/StsClient.html). I am using US-East-1 but you can use your preferred AWS region instead.
 
-```
+```java
 Region region = Region.US_EAST_1;
         StsClient stsClient = StsClient.builder()
                 .region(region)
@@ -67,9 +67,16 @@ For testing purposes, the [AssumeRoleRequest](https://sdk.amazonaws.com/java/api
 
 Now that you have an instance of `StsAssumeRoleCredentialsProvider`, you can pass it to any class that receives an [AwsCredentialsProvider class](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/auth/credentials/AwsCredentialsProvider.html).
 
-Or, you can get the credentials and session token, like in the example below:
+Or, you can get the credentials and session token as in the example below:
 
-`AwsSessionCredentials myCreds = (AwsSessionCredentials) credentialsProvider.resolveCredentials();`
+```java
+        AwsSessionCredentials myCreds = (AwsSessionCredentials) credentialsProvider.resolveCredentials();
+                
+        System.out.println("myCreds.sessionToken    [" + myCreds.sessionToken() + "]");
+        System.out.println("myCreds.accessKeyId     [" + myCreds.accessKeyId() + "]");
+        System.out.println("myCreds.secretAccessKey [" + myCreds.secretAccessKey() + "]");
+
+```
 
 
 ## Building and run the sample code
