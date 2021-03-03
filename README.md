@@ -25,6 +25,23 @@ For more details about Credential Providers and the changes between version 1 an
 
 ## See the StsAssumeRoleCredentialsProvider class in Action
 
+The JUnit test creates an instance of the [StsClient interface](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sts/StsClient.html). I am using US-East-1 but you can use your preferred AWS region instead.
+
+```
+Region region = Region.US_EAST_1;
+        StsClient stsClient = StsClient.builder()
+                .region(region)
+                .build();
+```
+
+You also need to set these values in our [configuration file](https://github.com/gtantachuco/auto-refresh-sts-for-java-sdk-2/blob/main/src/resources/config.properties). For security reasons, the configuration file does not have any values.
+
+```
+roleArn = 
+accessKeyId = 
+roleSessionName = 
+```
+
 For testing purposes, the [AssumeRoleRequest](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/sts/model/AssumeRoleRequest.html) instance has been set to 900 seconds or 15 minutes. You can set the value according to your requirements.
 
 ```java
