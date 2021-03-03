@@ -101,9 +101,11 @@ During the build process, the JUnit tests will execute. To see the auto-refresh 
 Your results will be similar to this:
 
 
+```
 roleRequest.durationSeconds [900]
 credentialsProvider.prefetchTime [PT5M]
 credentialsProvider.staleTime [PT1M]
+```
 
 ```
 Loop # [1]
